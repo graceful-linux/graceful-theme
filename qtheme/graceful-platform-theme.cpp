@@ -24,15 +24,16 @@ GracefulPlatformTheme::GracefulPlatformTheme()
 {
     log_debug("graceful platform theme is start ...");
 
-    QIcon::setThemeSearchPaths(QStringList() << "/usr/share/icons");
-
+    QIcon::setThemeSearchPaths(QIcon::themeSearchPaths() << "/usr/share/icons");
     if (QGSettings::isSchemaInstalled(GRACEFUL_SETTINGS_SCHEMA)) {
         mGsettings = new QGSettings(GRACEFUL_SETTINGS_SCHEMA, QByteArray(), this);
         connect(mGsettings, &QGSettings::changed, this, &GracefulPlatformTheme::onValueChanged);
 
         QString iconTheme = mGsettings->get(GRACEFUL_ICON_THEME).toString();
         QIcon::setThemeName(iconTheme);
+        log_debug("set icon theme: %s", iconTheme.toUtf8().constData());
     } else {
+        QIcon::setThemeName("Adwaita");
         // set gnome/mate/default values
     }
 
