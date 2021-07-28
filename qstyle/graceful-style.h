@@ -1,24 +1,45 @@
 #ifndef GRACEFULSTYLE_H
 #define GRACEFULSTYLE_H
 
-#include <QProxyStyle>
+#undef slots
+#define slots Q_SLOTS
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5,12,0))
-#include<private/qfusionstyle_p.h>
-#define Style QCommonStyle
-#else
-#define Style QProxyStyle
-#endif
+#include <QCommonStyle>
+#include <private/qcommonstyle_p.h>
 
-class GracefulStyle : public Style
+class GracefulStylePrivate;
+class GracefulStyle : public QCommonStyle
 {
     Q_OBJECT
 public:
     explicit GracefulStyle();
     ~GracefulStyle();
 
+    void polish(QPalette &p) Q_DECL_OVERRIDE;
+
 Q_SIGNALS:
 
+private:
+//    Q_PRIVATE_SLOT(d_func(), void _q_updateAppFont())
+
+};
+
+class GracefulStylePrivate : public QCommonStylePrivate
+{
+public:
+    QColor outline(const QPalette &pal) const;
+    QColor buttonColor(const QPalette &pal) const;
+    QColor highlight(const QPalette &pal) const;
+    QColor highlightedOutline(const QPalette &pal) const;
+    QColor backgroundColor(const QPalette &pal, const QWidget* widget) const;
+
+    inline QColor darkShade() const;
+    inline QColor lightShade() const;
+    inline QColor innerContrastLine() const;
+
+//    void _q_updateAppFont();
+
+    Q_DECLARE_PUBLIC(GracefulStyle)
 };
 
 #endif // GRACEFULSTYLE_H

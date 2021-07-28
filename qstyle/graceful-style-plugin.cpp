@@ -1,3 +1,4 @@
+#include "graceful-proxy-style.h"
 #include "graceful-style-plugin.h"
 #include "graceful-style.h"
 
@@ -12,7 +13,8 @@ QStyle *GracefulStylePlugin::create(const QString &key)
 {
     Q_UNUSED(key)
 
+    // 暂时使用
+    return new GracefulProxyStyle;
 
-
-    return new GracefulStyle();
+//    return new GracefulStyle();
 }

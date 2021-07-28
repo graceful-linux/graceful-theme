@@ -17,10 +17,12 @@ DISTFILES   += \
     $$PWD/graceful-style.json
 
 HEADERS += \
+    graceful-proxy-style.h \
     graceful-style-plugin.h \
     graceful-style.h
 
 SOURCES += \
+    graceful-proxy-style.cpp \
     graceful-style-plugin.cpp \
     graceful-style.cpp
 
