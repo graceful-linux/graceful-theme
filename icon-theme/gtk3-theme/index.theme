@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-graceful-linux-theme
+Name=graceful-linux
+Comment=graceful theme
+Encoding=UTF-8
+
+[X-Graceful-Theme]
+GtkTheme=graceful-linux
+MetacityTheme=graceful-linux
+IconTheme=graceful-linux
+CursorTheme=graceful-linux
+ButtonLayout=menu:minimize,maximize,close
